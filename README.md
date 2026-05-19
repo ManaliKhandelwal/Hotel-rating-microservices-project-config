@@ -1,10 +1,10 @@
-# 🏨 Hotel Rating System — Microservices Architecture
+#Hotel Rating System — Microservices Architecture
 
 A production-grade, distributed **Hotel Rating application** built with **Java 17**, **Spring Boot 3.x**, and **Spring Cloud**. Designed to demonstrate real-world microservices patterns including service discovery, centralized configuration, API gateway routing, and JWT-based authentication.
 
 ---
 
-## 📐 Architecture Overview
+## Architecture Overview
 
 ```
                         ┌─────────────────┐
@@ -31,7 +31,7 @@ Each service is **independently deployable**, communicates via **Feign Client**,
 
 ---
 
-## 🧩 Services
+## Services
 
 | Service | Port | Responsibility |
 |---|---|---|
@@ -45,7 +45,7 @@ Each service is **independently deployable**, communicates via **Feign Client**,
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Microservices Architecture** — Independent, loosely coupled services for horizontal scalability
 - **Service Discovery** — Automatic registration and lookup via Eureka Server
@@ -58,7 +58,7 @@ Each service is **independently deployable**, communicates via **Feign Client**,
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -74,19 +74,7 @@ Each service is **independently deployable**, communicates via **Feign Client**,
 | Logging | SLF4J, Logback |
 
 ---
-
-## ⚙️ Prerequisites
-
-Make sure the following are installed before running the project:
-
-- **Java 17+** — [Download](https://adoptium.net/)
-- **Maven 3.8+** — [Download](https://maven.apache.org/download.cgi)
-- **MySQL** — running locally
-- **Git**
-
----
-
-## 🚀 Getting Started
+##  Getting Started
 
 > **Important:** Services must be started in the order below. ConfigServer and ServiceRegistry must be fully up before starting any other service.
 
@@ -98,89 +86,17 @@ mvn spring-boot:run
 > Runs on `http://localhost:8888` — wait until you see `Started ConfigServerApplication`
 
 ### Step 2 — Start Service Registry
-```bash
-cd ServiceRegistry
-mvn spring-boot:run
-```
+
 > Eureka dashboard available at `http://localhost:8761`
 
 ### Step 3 — Start Core Microservices
-
-Open a separate terminal for each service:
-
-```bash
-# Terminal 1
-cd UserService && mvn spring-boot:run
-
-# Terminal 2
-cd HotelService && mvn spring-boot:run
-
-# Terminal 3
-cd RatingService && mvn spring-boot:run
-
-# Terminal 4
-cd AuthService && mvn spring-boot:run
-```
+start all independent servic(UserService / HotelService / RatingService / AuthService
 
 ### Step 4 — Start API Gateway
-```bash
-cd ApiGateway
-mvn spring-boot:run
-```
 > All client requests go through `http://localhost:8080`
 
 ---
-
-## 📁 Configuration
-
-Configuration is managed centrally via **Config Server**. All shared properties are defined in the root-level YAML files:
-
-```
-root/
-├── application.yml          # Shared default config (all services)
-└── application-dev.yml      # Development environment overrides
-```
-
-Each service can override specific properties in its own:
-```
-[ServiceName]/src/main/resources/application.yml
-```
-
-**Config Server** serves these files dynamically — no restarts needed for config changes in most cases.
-
----
-
-## 🏗️ Building
-
-Build all services at once from the root:
-```bash
-mvn clean install
-```
-
-Build a specific service:
-```bash
-cd [ServiceName]
-mvn clean install
-```
-
----
-
-## 🧪 Testing
-
-Each service has its own unit test suite. Run tests for a specific service:
-```bash
-cd [ServiceName]
-mvn test
-```
-
-Run all tests across all services from root:
-```bash
-mvn test --projects UserService,HotelService,RatingService,AuthService,ApiGateway
-```
-
----
-
-## 📋 API Reference
+## API Reference
 
 All requests go through the API Gateway at `http://localhost:8080`.
 
@@ -213,7 +129,7 @@ All requests go through the API Gateway at `http://localhost:8080`.
 
 ---
 
-## 📝 Logging
+## Logging
 
 All services use **SLF4J + Logback** for structured logging.
 
@@ -231,7 +147,7 @@ ERROR [ApiGateway] Exception on GET /ratings/999 — Hotel not found
 
 ---
 
-## 📌 Startup Checklist
+## Startup Checklist
 
 Before hitting any endpoint, verify all services are registered on Eureka:
 
@@ -244,24 +160,8 @@ Before hitting any endpoint, verify all services are registered on Eureka:
    - `API-GATEWAY`
 
 ---
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Commit your changes: `git commit -m 'Add: describe your change'`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Open a Pull Request
-
----
-
-## 👩‍💻 Author
+## Author
 
 **Manali Khandelwal**  
 Java Backend Developer | Spring Boot · Microservices · REST APIs  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://linkedin.com/in/manali-khandelwal)
-[![Email](https://img.shields.io/badge/Email-manali.13khandelwal%40gmail.com-red?logo=gmail)](mailto:manali.13khandelwal@gmail.com)
-
----
-
-
